@@ -1,9 +1,6 @@
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_assessment/config/routes/route_name.dart';
 import 'package:flutter_assessment/config/routes/routes.dart';
-import 'package:flutter_assessment/config/theme/light_theme.dart';
 import 'package:flutter_assessment/features/app_theme/bloc/theme_bloc.dart';
 import 'package:flutter_assessment/features/app_theme/bloc/theme_state.dart';
 import 'package:flutter_assessment/features/home/presentation/bloc/item_bloc.dart';
@@ -53,6 +50,7 @@ class _AppViewState extends State<AppView> {
             return MaterialApp(
               theme: state.themeData,
               navigatorKey: _navigatorKey,
+              debugShowCheckedModeBanner: false,
               onGenerateRoute: AppRoutes.onGenerateRoutes,
               initialRoute: RouteName.homePage,
             );

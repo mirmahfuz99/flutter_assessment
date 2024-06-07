@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assessment/features/home/data/models/item.dart';
+import 'package:flutter_assessment/features/item_details/presentation/bloc/item_details_bloc.dart';
+import 'package:flutter_assessment/features/item_details/presentation/bloc/item_details_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemDetailsPage extends StatelessWidget {
   final Item item;
@@ -7,10 +10,20 @@ class ItemDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Home Page"),
-      ),
+    return BlocBuilder<ItemDetailsBloc, ItemDetailsState>(
+      builder: (context, state){
+
+        if(state is ItemDetailsLoading){
+          return const Center(child: CircularProgressIndicator(),);
+        }
+        if(state is ItemDetailsError){
+          return const Center(child: Text("Data facing error"));
+        }
+        if(state is ItemDetailsLoaded){
+          return Text(state.itemDetails!.name!);
+        }
+        return const SizedBox();
+      },
     );
   }
 }
