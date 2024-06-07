@@ -16,3 +16,12 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 dart run build_runner build
+
+q=tetris+language:assembly&sort=stars&order=desc
+
+
+https://api.github.com/search/repositories?q={query}{&page,per_page,sort,order}
+
+"https://api.github.com/repos/{owner}/{repo}",
+
+https://api.github.com/search/repositories?q=flutter&page=1&per_page=10&sort=star$order=desc

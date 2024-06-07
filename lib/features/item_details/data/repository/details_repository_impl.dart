@@ -12,10 +12,10 @@ class ItemDetailsRepositoryImpl extends ItemDetailsRepository {
   ItemDetailsRepositoryImpl({required this.itemDetailsDataSource});
 
   @override
-  Future<DataState<ItemDetails>> getItemDetails({required String param})async {
+  Future<DataState<ItemDetails>> getItemDetails({required String page})async {
 
     try {
-      final itemData = await itemDetailsDataSource.getItemDetails(itemID: param);
+      final itemData = await itemDetailsDataSource.getItemDetails(itemID: page);
       final items = ItemDetails.fromJson(itemData);
       return DataSuccess(items);
     } on DioException catch(e){

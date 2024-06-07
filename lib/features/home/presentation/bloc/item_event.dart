@@ -5,3 +5,5 @@ abstract class ItemEvent {
 class GetItems extends ItemEvent {
   const GetItems();
 }
+
+class LoadMoreItems extends ItemEvent {}

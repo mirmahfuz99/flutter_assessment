@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_assessment/features/home/data/models/item.dart';
+import 'package:flutter_assessment/features/home/data/models/search_result_item.dart';
 import 'package:flutter_assessment/features/item_details/presentation/bloc/item_details_bloc.dart';
 import 'package:flutter_assessment/features/item_details/presentation/bloc/item_details_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemDetailsPage extends StatelessWidget {
-  final Item item;
+  final SearchResultItem item;
   const ItemDetailsPage({super.key, required this.item});
 
   @override

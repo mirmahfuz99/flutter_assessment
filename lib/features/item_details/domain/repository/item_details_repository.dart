@@ -3,5 +3,5 @@ import 'package:flutter_assessment/features/item_details/data/model/item_details
 
 abstract class ItemDetailsRepository {
 
-  Future<DataState<ItemDetails>> getItemDetails({required String param});
+  Future<DataState<ItemDetails>> getItemDetails({required String page});
 }

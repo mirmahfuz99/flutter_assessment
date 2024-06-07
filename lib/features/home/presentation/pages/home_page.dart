@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assessment/config/routes/route_name.dart';
-import 'package:flutter_assessment/features/home/data/models/item.dart';
+import 'package:flutter_assessment/features/home/data/models/search_result_item.dart';
 import 'package:flutter_assessment/features/home/presentation/bloc/item_bloc.dart';
+import 'package:flutter_assessment/features/home/presentation/bloc/item_event.dart';
 import 'package:flutter_assessment/features/home/presentation/bloc/remote_item_state.dart';
 import 'package:flutter_assessment/features/home/presentation/widgets/item_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,14 +28,27 @@ class HomePage extends StatelessWidget {
             return const Center(child: Text("Data facing error"));
           }
           if(state is ItemLoaded){
-            return ListView.builder(
-              itemBuilder: (context,index){
-                return ItemWidget(
-                  item: state.items![index] ,
-                  onItemPressed: (item) => _onItemPressed(context,item),
-                );
+            return NotificationListener<ScrollNotification>(
+              onNotification: (scrollNotification) {
+                if (scrollNotification is ScrollEndNotification &&
+                    scrollNotification.metrics.extentAfter == 0) {
+                  BlocProvider.of<ItemBloc>(context).add(LoadMoreItems());
+                }
+                return false;
               },
-              itemCount: state.items!.length,
+              child: ListView.builder(
+                itemCount: state.hasReachedMax ? state.items!.length : state.items!.length + 1,
+                itemBuilder: (context, index) {
+                  if (index >= state.items!.length) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else {
+                    return ItemWidget(
+                      item: state.items![index],
+                      onItemPressed: (item) => _onItemPressed(context, item),
+                    );
+                  }
+                },
+              ),
             );
           }
           return const SizedBox();
@@ -42,7 +56,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _onItemPressed(BuildContext context, Item item) {
+  void _onItemPressed(BuildContext context, SearchResultItem item) {
     Navigator.pushNamed(context, RouteName.itemDetails, arguments: item);
   }
 }

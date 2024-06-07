@@ -12,7 +12,7 @@ class GetItemDetailsUseCase implements UseCase<DataState<ItemDetails>,String>{
   
   @override
   Future<DataState<ItemDetails>> call({String? params}) {
-    return _itemDetailsRepository.getItemDetails(param: params!);
+    return _itemDetailsRepository.getItemDetails(page: params!);
   }
   
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assessment/config/routes/route_name.dart';
-import 'package:flutter_assessment/features/home/data/models/item.dart';
+import 'package:flutter_assessment/features/home/data/models/search_result_item.dart';
 import 'package:flutter_assessment/features/home/presentation/pages/home_page.dart';
 import 'package:flutter_assessment/features/item_details/presentation/pages/item_details_page.dart';
 
@@ -13,7 +13,7 @@ class AppRoutes {
         return _materialRoute(const HomePage());
 
       case RouteName.itemDetails:
-        return _materialRoute(ItemDetailsPage(item: settings.arguments as Item));
+        return _materialRoute(ItemDetailsPage(item: settings.arguments as SearchResultItem));
 
 
       default:
