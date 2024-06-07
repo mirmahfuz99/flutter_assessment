@@ -30,7 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         title!,
         style: robotoBold.copyWith(
             fontSize: Dimensions.fontSizeExtraLarge,
-            color: titleColor ?? Theme.of(context).textTheme.bodySmall!.color!.withOpacity(.8)),
+            color: titleColor ?? Theme.of(context).textTheme.bodySmall!.color!),
       ),
       centerTitle: centerTitle,
       automaticallyImplyLeading: true,
