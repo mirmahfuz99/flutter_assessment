@@ -24,6 +24,8 @@ mixin _$SearchResultItem {
   int? get userName => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'description')
+  String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'stargazers_count')
   int? get stargazersCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'owner')
@@ -44,6 +46,7 @@ abstract class $SearchResultItemCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int? userName,
       @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'stargazers_count') int? stargazersCount,
       @JsonKey(name: 'owner') Owner? owner});
 
@@ -65,6 +68,7 @@ class _$SearchResultItemCopyWithImpl<$Res, $Val extends SearchResultItem>
   $Res call({
     Object? userName = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? stargazersCount = freezed,
     Object? owner = freezed,
   }) {
@@ -76,6 +80,10 @@ class _$SearchResultItemCopyWithImpl<$Res, $Val extends SearchResultItem>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       stargazersCount: freezed == stargazersCount
           ? _value.stargazersCount
@@ -112,6 +120,7 @@ abstract class _$$SearchResultItemImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') int? userName,
       @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'stargazers_count') int? stargazersCount,
       @JsonKey(name: 'owner') Owner? owner});
 
@@ -132,6 +141,7 @@ class __$$SearchResultItemImplCopyWithImpl<$Res>
   $Res call({
     Object? userName = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? stargazersCount = freezed,
     Object? owner = freezed,
   }) {
@@ -143,6 +153,10 @@ class __$$SearchResultItemImplCopyWithImpl<$Res>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       stargazersCount: freezed == stargazersCount
           ? _value.stargazersCount
@@ -162,6 +176,7 @@ class _$SearchResultItemImpl implements _SearchResultItem {
   const _$SearchResultItemImpl(
       {@JsonKey(name: 'id') this.userName,
       @JsonKey(name: 'name') this.name,
+      @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'stargazers_count') this.stargazersCount,
       @JsonKey(name: 'owner') this.owner});
 
@@ -175,6 +190,9 @@ class _$SearchResultItemImpl implements _SearchResultItem {
   @JsonKey(name: 'name')
   final String? name;
   @override
+  @JsonKey(name: 'description')
+  final String? description;
+  @override
   @JsonKey(name: 'stargazers_count')
   final int? stargazersCount;
   @override
@@ -183,7 +201,7 @@ class _$SearchResultItemImpl implements _SearchResultItem {
 
   @override
   String toString() {
-    return 'SearchResultItem(userName: $userName, name: $name, stargazersCount: $stargazersCount, owner: $owner)';
+    return 'SearchResultItem(userName: $userName, name: $name, description: $description, stargazersCount: $stargazersCount, owner: $owner)';
   }
 
   @override
@@ -194,6 +212,8 @@ class _$SearchResultItemImpl implements _SearchResultItem {
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.stargazersCount, stargazersCount) ||
                 other.stargazersCount == stargazersCount) &&
             (identical(other.owner, owner) || other.owner == owner));
@@ -201,8 +221,8 @@ class _$SearchResultItemImpl implements _SearchResultItem {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userName, name, stargazersCount, owner);
+  int get hashCode => Object.hash(
+      runtimeType, userName, name, description, stargazersCount, owner);
 
   @JsonKey(ignore: true)
   @override
@@ -223,6 +243,7 @@ abstract class _SearchResultItem implements SearchResultItem {
   const factory _SearchResultItem(
       {@JsonKey(name: 'id') final int? userName,
       @JsonKey(name: 'name') final String? name,
+      @JsonKey(name: 'description') final String? description,
       @JsonKey(name: 'stargazers_count') final int? stargazersCount,
       @JsonKey(name: 'owner') final Owner? owner}) = _$SearchResultItemImpl;
 
@@ -235,6 +256,9 @@ abstract class _SearchResultItem implements SearchResultItem {
   @override
   @JsonKey(name: 'name')
   String? get name;
+  @override
+  @JsonKey(name: 'description')
+  String? get description;
   @override
   @JsonKey(name: 'stargazers_count')
   int? get stargazersCount;
@@ -257,6 +281,8 @@ mixin _$Owner {
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'avatar_url')
   String? get avatarUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'type')
+  String? get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -270,7 +296,8 @@ abstract class $OwnerCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'avatar_url') String? avatarUrl});
+      @JsonKey(name: 'avatar_url') String? avatarUrl,
+      @JsonKey(name: 'type') String? type});
 }
 
 /// @nodoc
@@ -288,6 +315,7 @@ class _$OwnerCopyWithImpl<$Res, $Val extends Owner>
   $Res call({
     Object? id = freezed,
     Object? avatarUrl = freezed,
+    Object? type = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -297,6 +325,10 @@ class _$OwnerCopyWithImpl<$Res, $Val extends Owner>
       avatarUrl: freezed == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -311,7 +343,8 @@ abstract class _$$OwnerImplCopyWith<$Res> implements $OwnerCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'avatar_url') String? avatarUrl});
+      @JsonKey(name: 'avatar_url') String? avatarUrl,
+      @JsonKey(name: 'type') String? type});
 }
 
 /// @nodoc
@@ -327,6 +360,7 @@ class __$$OwnerImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? avatarUrl = freezed,
+    Object? type = freezed,
   }) {
     return _then(_$OwnerImpl(
       id: freezed == id
@@ -337,6 +371,10 @@ class __$$OwnerImplCopyWithImpl<$Res>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -346,7 +384,8 @@ class __$$OwnerImplCopyWithImpl<$Res>
 class _$OwnerImpl implements _Owner {
   const _$OwnerImpl(
       {@JsonKey(name: 'id') this.id,
-      @JsonKey(name: 'avatar_url') this.avatarUrl});
+      @JsonKey(name: 'avatar_url') this.avatarUrl,
+      @JsonKey(name: 'type') this.type});
 
   factory _$OwnerImpl.fromJson(Map<String, dynamic> json) =>
       _$$OwnerImplFromJson(json);
@@ -357,10 +396,13 @@ class _$OwnerImpl implements _Owner {
   @override
   @JsonKey(name: 'avatar_url')
   final String? avatarUrl;
+  @override
+  @JsonKey(name: 'type')
+  final String? type;
 
   @override
   String toString() {
-    return 'Owner(id: $id, avatarUrl: $avatarUrl)';
+    return 'Owner(id: $id, avatarUrl: $avatarUrl, type: $type)';
   }
 
   @override
@@ -370,12 +412,13 @@ class _$OwnerImpl implements _Owner {
             other is _$OwnerImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.avatarUrl, avatarUrl) ||
-                other.avatarUrl == avatarUrl));
+                other.avatarUrl == avatarUrl) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, avatarUrl);
+  int get hashCode => Object.hash(runtimeType, id, avatarUrl, type);
 
   @JsonKey(ignore: true)
   @override
@@ -394,7 +437,8 @@ class _$OwnerImpl implements _Owner {
 abstract class _Owner implements Owner {
   const factory _Owner(
       {@JsonKey(name: 'id') final int? id,
-      @JsonKey(name: 'avatar_url') final String? avatarUrl}) = _$OwnerImpl;
+      @JsonKey(name: 'avatar_url') final String? avatarUrl,
+      @JsonKey(name: 'type') final String? type}) = _$OwnerImpl;
 
   factory _Owner.fromJson(Map<String, dynamic> json) = _$OwnerImpl.fromJson;
 
@@ -404,6 +448,9 @@ abstract class _Owner implements Owner {
   @override
   @JsonKey(name: 'avatar_url')
   String? get avatarUrl;
+  @override
+  @JsonKey(name: 'type')
+  String? get type;
   @override
   @JsonKey(ignore: true)
   _$$OwnerImplCopyWith<_$OwnerImpl> get copyWith =>

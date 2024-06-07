@@ -9,6 +9,7 @@ class SearchResultItem with _$SearchResultItem {
   const factory SearchResultItem({
     @JsonKey(name: 'id') int? userName,
     @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'stargazers_count') int? stargazersCount,
     @JsonKey(name: 'owner') Owner? owner,
   }) = _SearchResultItem;
@@ -24,6 +25,7 @@ class Owner with _$Owner {
   const factory Owner({
     @JsonKey(name: 'id') int? id,
     @JsonKey(name: 'avatar_url') String? avatarUrl,
+    @JsonKey(name: 'type') String? type,
   }) = _Owner;
 
   factory Owner.fromJson(Map<String, dynamic> json) =>

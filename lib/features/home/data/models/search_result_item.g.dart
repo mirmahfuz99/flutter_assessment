@@ -11,6 +11,7 @@ _$SearchResultItemImpl _$$SearchResultItemImplFromJson(
     _$SearchResultItemImpl(
       userName: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
+      description: json['description'] as String?,
       stargazersCount: (json['stargazers_count'] as num?)?.toInt(),
       owner: json['owner'] == null
           ? null
@@ -22,6 +23,7 @@ Map<String, dynamic> _$$SearchResultItemImplToJson(
     <String, dynamic>{
       'id': instance.userName,
       'name': instance.name,
+      'description': instance.description,
       'stargazers_count': instance.stargazersCount,
       'owner': instance.owner,
     };
@@ -29,10 +31,12 @@ Map<String, dynamic> _$$SearchResultItemImplToJson(
 _$OwnerImpl _$$OwnerImplFromJson(Map<String, dynamic> json) => _$OwnerImpl(
       id: (json['id'] as num?)?.toInt(),
       avatarUrl: json['avatar_url'] as String?,
+      type: json['type'] as String?,
     );
 
 Map<String, dynamic> _$$OwnerImplToJson(_$OwnerImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'avatar_url': instance.avatarUrl,
+      'type': instance.type,
     };

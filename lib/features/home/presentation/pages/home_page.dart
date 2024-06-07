@@ -12,12 +12,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final themeBloc = BlocProvider.of<ThemeBloc>(context);
-
     return Scaffold(
       body: _buildBody(),
     );
   }
+
   _buildBody(){
     return BlocBuilder<ItemBloc, ItemState>(
         builder: (context, state){

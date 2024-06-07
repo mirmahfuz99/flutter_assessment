@@ -16,28 +16,38 @@ class ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CustomImage(
-            height: 100.0,
-            image: item!.owner!.avatarUrl!,
-          ),
-          const SizedBox(width: Dimensions.paddingSizeExtraLarge,),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Name: ${item!.name!}",style: robotoMedium.copyWith(
-                  fontSize: Dimensions.fontSizeLarge,
-                ),),
-                Text("Number Of Star: ${item!.stargazersCount!.toString()}"),
-              ],
+    return  GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: _onTap,
+      child: Card(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CustomImage(
+              height: 100.0,
+              image: item!.owner!.avatarUrl!,
             ),
-          ),
-        ],
+            const SizedBox(width: Dimensions.paddingSizeExtraLarge,),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Name: ${item!.name!}",style: robotoMedium.copyWith(
+                    fontSize: Dimensions.fontSizeLarge,
+                  ),),
+                  Text("Number Of Star: ${item!.stargazersCount!.toString()}"),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  void _onTap() {
+    if (onItemPressed != null) {
+      onItemPressed!(item!);
+    }
   }
 }
