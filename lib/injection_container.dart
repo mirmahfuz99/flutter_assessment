@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_assessment/core/data/remote/api_endpoints.dart';
 import 'package:flutter_assessment/core/data/remote/dio_client.dart';
+import 'package:flutter_assessment/features/app_theme/bloc/theme_bloc.dart';
 import 'package:flutter_assessment/features/home/data/data_source/remote/item_remote_data_source.dart';
 import 'package:flutter_assessment/features/home/data/repository/item_repository_impl.dart';
 import 'package:flutter_assessment/features/home/domain/repository/item_repository.dart';
@@ -36,6 +37,7 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<GetItemDetailsUseCase>(GetItemDetailsUseCase(sl()));
 
   //Blocs
+  sl.registerFactory<ThemeBloc>(()=> ThemeBloc());
   sl.registerFactory<ItemBloc>(()=> ItemBloc(sl()));
   sl.registerFactory<ItemDetailsBloc>(()=> ItemDetailsBloc(sl()));
 
