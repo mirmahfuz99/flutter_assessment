@@ -28,6 +28,8 @@ mixin _$SearchResultItem {
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'stargazers_count')
   int? get stargazersCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  String? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'owner')
   Owner? get owner => throw _privateConstructorUsedError;
 
@@ -48,6 +50,7 @@ abstract class $SearchResultItemCopyWith<$Res> {
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'stargazers_count') int? stargazersCount,
+      @JsonKey(name: 'updated_at') String? updatedAt,
       @JsonKey(name: 'owner') Owner? owner});
 
   $OwnerCopyWith<$Res>? get owner;
@@ -70,6 +73,7 @@ class _$SearchResultItemCopyWithImpl<$Res, $Val extends SearchResultItem>
     Object? name = freezed,
     Object? description = freezed,
     Object? stargazersCount = freezed,
+    Object? updatedAt = freezed,
     Object? owner = freezed,
   }) {
     return _then(_value.copyWith(
@@ -89,6 +93,10 @@ class _$SearchResultItemCopyWithImpl<$Res, $Val extends SearchResultItem>
           ? _value.stargazersCount
           : stargazersCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
       owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
@@ -122,6 +130,7 @@ abstract class _$$SearchResultItemImplCopyWith<$Res>
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'stargazers_count') int? stargazersCount,
+      @JsonKey(name: 'updated_at') String? updatedAt,
       @JsonKey(name: 'owner') Owner? owner});
 
   @override
@@ -143,6 +152,7 @@ class __$$SearchResultItemImplCopyWithImpl<$Res>
     Object? name = freezed,
     Object? description = freezed,
     Object? stargazersCount = freezed,
+    Object? updatedAt = freezed,
     Object? owner = freezed,
   }) {
     return _then(_$SearchResultItemImpl(
@@ -162,6 +172,10 @@ class __$$SearchResultItemImplCopyWithImpl<$Res>
           ? _value.stargazersCount
           : stargazersCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String?,
       owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
@@ -178,6 +192,7 @@ class _$SearchResultItemImpl implements _SearchResultItem {
       @JsonKey(name: 'name') this.name,
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'stargazers_count') this.stargazersCount,
+      @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(name: 'owner') this.owner});
 
   factory _$SearchResultItemImpl.fromJson(Map<String, dynamic> json) =>
@@ -196,12 +211,15 @@ class _$SearchResultItemImpl implements _SearchResultItem {
   @JsonKey(name: 'stargazers_count')
   final int? stargazersCount;
   @override
+  @JsonKey(name: 'updated_at')
+  final String? updatedAt;
+  @override
   @JsonKey(name: 'owner')
   final Owner? owner;
 
   @override
   String toString() {
-    return 'SearchResultItem(userName: $userName, name: $name, description: $description, stargazersCount: $stargazersCount, owner: $owner)';
+    return 'SearchResultItem(userName: $userName, name: $name, description: $description, stargazersCount: $stargazersCount, updatedAt: $updatedAt, owner: $owner)';
   }
 
   @override
@@ -216,13 +234,15 @@ class _$SearchResultItemImpl implements _SearchResultItem {
                 other.description == description) &&
             (identical(other.stargazersCount, stargazersCount) ||
                 other.stargazersCount == stargazersCount) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
             (identical(other.owner, owner) || other.owner == owner));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, userName, name, description, stargazersCount, owner);
+  int get hashCode => Object.hash(runtimeType, userName, name, description,
+      stargazersCount, updatedAt, owner);
 
   @JsonKey(ignore: true)
   @override
@@ -245,6 +265,7 @@ abstract class _SearchResultItem implements SearchResultItem {
       @JsonKey(name: 'name') final String? name,
       @JsonKey(name: 'description') final String? description,
       @JsonKey(name: 'stargazers_count') final int? stargazersCount,
+      @JsonKey(name: 'updated_at') final String? updatedAt,
       @JsonKey(name: 'owner') final Owner? owner}) = _$SearchResultItemImpl;
 
   factory _SearchResultItem.fromJson(Map<String, dynamic> json) =
@@ -262,6 +283,9 @@ abstract class _SearchResultItem implements SearchResultItem {
   @override
   @JsonKey(name: 'stargazers_count')
   int? get stargazersCount;
+  @override
+  @JsonKey(name: 'updated_at')
+  String? get updatedAt;
   @override
   @JsonKey(name: 'owner')
   Owner? get owner;

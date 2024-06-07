@@ -13,6 +13,7 @@ _$SearchResultItemImpl _$$SearchResultItemImplFromJson(
       name: json['name'] as String?,
       description: json['description'] as String?,
       stargazersCount: (json['stargazers_count'] as num?)?.toInt(),
+      updatedAt: json['updated_at'] as String?,
       owner: json['owner'] == null
           ? null
           : Owner.fromJson(json['owner'] as Map<String, dynamic>),
@@ -25,6 +26,7 @@ Map<String, dynamic> _$$SearchResultItemImplToJson(
       'name': instance.name,
       'description': instance.description,
       'stargazers_count': instance.stargazersCount,
+      'updated_at': instance.updatedAt,
       'owner': instance.owner,
     };
 

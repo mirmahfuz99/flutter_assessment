@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_assessment/core/widgets/custom_app_bar.dart';
 import 'package:flutter_assessment/core/widgets/custom_image.dart';
 import 'package:flutter_assessment/features/home/data/models/search_result_item.dart';
+import 'package:flutter_assessment/utils/date_converter.dart';
 import 'package:flutter_assessment/utils/dimensions.dart';
 import 'package:flutter_assessment/utils/styles.dart';
 
@@ -11,6 +12,8 @@ class ItemDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: CustomAppBar(
         title: item.name,
@@ -20,6 +23,7 @@ class ItemDetailsPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -28,9 +32,17 @@ class ItemDetailsPage extends StatelessWidget {
                   image: item.owner!.avatarUrl!,
                   height: 100,
                 ),
+                const SizedBox(width: Dimensions.paddingSizeDefault,),
                 Text(item.owner!.type!,style: robotoMedium.copyWith(
                   fontSize: Dimensions.fontSizeExtraLarge,
                 ),),
+              ],
+            ),
+            const SizedBox(height: Dimensions.paddingSizeDefault,),
+            Row(
+              children: [
+                const Text("Updated date & time: ",style: robotoMedium,),
+                Text(DateFormatter().format(item.updatedAt!),style: robotoMedium,),
               ],
             ),
             const SizedBox(height: Dimensions.paddingSizeDefault,),

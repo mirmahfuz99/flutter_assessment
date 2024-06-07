@@ -11,6 +11,7 @@ class SearchResultItem with _$SearchResultItem {
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'stargazers_count') int? stargazersCount,
+    @JsonKey(name: 'updated_at') String? updatedAt,
     @JsonKey(name: 'owner') Owner? owner,
   }) = _SearchResultItem;
 
