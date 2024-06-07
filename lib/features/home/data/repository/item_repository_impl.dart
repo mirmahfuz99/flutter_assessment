@@ -26,19 +26,4 @@ class ItemRepositoryImpl extends ItemRepository {
     }
   }
 
-  @override
-  Future<DataState<Item>> getItemDetails({required String param}) async {
-
-    try {
-      final itemData = await itemRemoteDataSource.getItemDetails(itemID: param);
-      final items = Item.fromJson(itemData);
-      return DataSuccess(items);
-    } on DioException catch(e){
-      if (kDebugMode) {
-        print(e);
-      }
-      return DataFailed(e);
-    }
-  }
-
 }

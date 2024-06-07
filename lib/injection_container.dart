@@ -6,6 +6,11 @@ import 'package:flutter_assessment/features/home/data/repository/item_repository
 import 'package:flutter_assessment/features/home/domain/repository/item_repository.dart';
 import 'package:flutter_assessment/features/home/domain/usecases/get_item.dart';
 import 'package:flutter_assessment/features/home/presentation/bloc/item_bloc.dart';
+import 'package:flutter_assessment/features/item_details/data/data_source/remote/item_details_data_source.dart';
+import 'package:flutter_assessment/features/item_details/data/repository/item_details_repository_impl.dart';
+import 'package:flutter_assessment/features/item_details/domain/repository/item_details_repository.dart';
+import 'package:flutter_assessment/features/item_details/domain/usecases/get_item_details.dart';
+import 'package:flutter_assessment/features/item_details/presentation/bloc/item_details_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
@@ -23,12 +28,16 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<ItemRemoteDataSource>(ItemDataSourceImpl(dioClient: sl()));
   sl.registerSingleton<ItemRepository>(ItemRepositoryImpl(itemRemoteDataSource: sl()));
 
+  sl.registerSingleton<ItemDetailsDataSource>(ItemDetailsDataSourceImpl(dioClient: sl()));
+  sl.registerSingleton<ItemDetailsRepository>(ItemDetailsRepositoryImpl(itemDetailsDataSource: sl()));
+
   // UseCases
   sl.registerSingleton<GetItemUseCase>(GetItemUseCase(sl()));
+  sl.registerSingleton<GetItemDetailsUseCase>(GetItemDetailsUseCase(sl()));
 
   //Blocs
-  sl.registerFactory<ItemBloc>(()=> ItemBloc(sl())
-  );
+  sl.registerFactory<ItemBloc>(()=> ItemBloc(sl()));
+  sl.registerFactory<ItemDetailsBloc>(()=> ItemDetailsBloc(sl()));
 
 
 }
